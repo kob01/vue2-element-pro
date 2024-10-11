@@ -1,7 +1,7 @@
 <template>
   <div class="pro-table" :style="{
     '--inputWidth': inputWidth + 'px',
-    '--colNum': colNum',
+    '--colNum': colNum,
     '--rowGap': rowGap,
     '--columnGap': columnGap,
   }">

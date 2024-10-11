@@ -1,6 +1,6 @@
 <template>
   <div class="lay-cc">
-    <com-demo-block>
+    <com-demo-block :cp="cp" cp-name="a-test">
       <button slot="source">测试</button>
       <!-- <highlight-code slot="highlight" lang="vue">
         <template>
@@ -15,11 +15,15 @@
       v-model="value"
       :options="arr"
       :column="3"
-    ></select-pro>
-    <form-pro :formFields="formList" @submit="query"></form-pro>
+      style="width: 40%;"
+    />
+    <form-pro :form-fields="formList" @submit="query" />
   </div>
 </template>
+
 <script>
+import Tss from './test.vue'
+
 export default {
   data() {
     return {
@@ -28,6 +32,7 @@ export default {
           <com-back-button></com-back-button>
         </template>
       `,
+      cp: { name: 'a-test', component: Tss },
       value: ['AAA1'],
       arr: [],
       formList: [
@@ -38,19 +43,19 @@ export default {
           { label: '三(3)班', value: '3' }
         ] },
         { key: 'date', title: '日期', type: 'datetime' },
-        { key: 'num', title: '第几名', type: 'inputNumber' },
+        { key: 'num', title: '第几名', type: 'inputNumber' }
       ]
-    };
+    }
   },
   created() {
     for (let index = 0; index < 26; index++) {
-      this.arr.push({ label: '让我看看11' + index, value: 'AAA' + index });
+      this.arr.push({ label: '让我看看' + index, value: 'AAA' + index })
     }
   },
   methods: {
     query(...v) {
-      console.log('form==>', v);
+      console.log('form==>', v)
     }
   }
-};
+}
 </script>

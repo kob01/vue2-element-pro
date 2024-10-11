@@ -182,6 +182,7 @@ export default {
           }
         });
       }
+      this.validate()
     },
     options() {
       this.optionArr = this.initOptions();
@@ -206,6 +207,19 @@ export default {
     });
   },
   methods: {
+    validate() {
+      let parent = this.$parent;
+      let parentName = parent.$options.componentName;
+      while (parentName !== 'ElFormItem') {
+        parent = parent.$parent;
+        parentName = parent.$options.componentName;
+      }
+      if (!parent) return
+      const rules = parent.getRules();
+      if (rules.length || this.required !== undefined) {
+        parent.onFieldChange()
+      }
+    },
     initOptions() { // 初始化选项数组
       return this.options.map((item, i) => {
         return {

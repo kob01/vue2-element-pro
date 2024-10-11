@@ -31,6 +31,7 @@ import '@examples/less/common.less'
 // 全局注册代码块样式
 Vue.component('ComDemoBlock', () => import('./components/demo-block.vue'))
 Vue.component('FooterNav', () => import('./components/footer-nav.vue'))
+Vue.component('b-test', () => import('./views/layout/test.vue'))
 
 Vue.config.productionTip = false
 
